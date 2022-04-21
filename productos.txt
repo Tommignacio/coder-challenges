@@ -1,0 +1,1 @@
+[{"title":"hoja","price":123.45,"thumbnail":"hoja.jpg","id":1},{"title":"lapiz","price":123.45,"thumbnail":"lapiz.jpg","id":2}]
