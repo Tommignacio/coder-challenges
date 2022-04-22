@@ -5,13 +5,12 @@ class Container {
 	}
 
 	//lee el archivo
-	async read(obj) {
+	async read() {
 		try {
 			let file = await fs.promises.readFile(this.nombre, "utf-8");
 			//si el archivo esta vacío
 			if (file === "") {
 				file = [];
-				file.push(obj);
 				return file;
 			}
 			//si tiene objeos
@@ -39,12 +38,17 @@ class Container {
 			//lee el archivo
 			let res = await this.read(obj);
 			//busca repetidos
-			for (let el of res) {
-				if (el["title"] === obj["title"]) throw "error, producto repetido";
+			console.log(res.length);
+			if (res.length >= 1) {
+				for (let el of res) {
+					console.log(el["title"], obj["title"]);
+					if (el["title"] === obj["title"]) throw "error, producto repetido";
+				}
 			}
 			//agrega el nuevo id
 			obj["id"] = res.length + 1;
 			res.push(obj);
+			console.log(res);
 			//escribe el nuevo objeto
 			this.write(JSON.stringify(res));
 			return `el id del nuevo objeto es ${obj["id"]}`;

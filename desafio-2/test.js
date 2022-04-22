@@ -3,12 +3,12 @@ const Container = require("./contenedor");
 async function test() {
 	const file = new Container("./productos.txt");
 
-	const saveNew = await file.save({
-		title: "cartulina",
-		price: 123.45,
-		thumbnail: "cartulina.jpg",
-	});
-	console.log(saveNew);
+	// const saveNew = await file.save({
+	// 	title: "camisa",
+	// 	price: 123.45,
+	// 	thumbnail: "cartulina.jpg",
+	// });
+	// console.log(saveNew);
 	// let getId = await file.getById(2);
 	// console.log(getId);
 
@@ -16,6 +16,6 @@ async function test() {
 	// console.log(read);
 
 	// await file.deleteById(1);
-	// await file.deleteAll();
+	await file.deleteAll();
 }
 test();
