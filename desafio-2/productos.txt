@@ -1,1 +1,0 @@
-[{"title":"cartera","price":123.45,"thumbnail":"cartulina.jpg","id":1},{"title":"saco","price":123.45,"thumbnail":"cartulina.jpg","id":2},{"title":"camisa","price":123.45,"thumbnail":"cartulina.jpg","id":3}]

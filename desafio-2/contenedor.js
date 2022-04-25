@@ -1,21 +1,42 @@
 const fs = require("fs");
 class Container {
-	constructor(nombre) {
-		this.nombre = nombre;
+	constructor(name) {
+		this.name = name;
+	}
+
+	//crea archivo
+	async createFile(path) {
+		try {
+			// verifico si el archivo ya existe. Si no existe, lo creo
+			if (fs.existsSync(path)) {
+				//El archivo ya existe, entonces no hago nada;
+				return false;
+			} else {
+				//El archivo no existe, entonces lo creo;
+				await fs.promises.writeFile(path, "", "utf8");
+				return true;
+			}
+		} catch (err) {
+			console.log("Error en la creación del archivo", err);
+			return false;
+		}
 	}
 
 	//lee el archivo
 	async read() {
 		try {
-			let file = await fs.promises.readFile(this.nombre, "utf-8");
+			let file = await fs.promises.readFile(this.name, "utf-8");
+			console.log(file, "hola");
 			//si el archivo esta vacío
 			if (file === "") {
 				file = [];
+				console.log(file, "array????");
 				return file;
 			}
 			//si tiene objeos
 			else {
 				let fileObj = JSON.parse(file);
+				console.log(fileObj, "array???");
 				return fileObj;
 			}
 		} catch (error) {
@@ -26,7 +47,7 @@ class Container {
 	//escibe el archivo
 	async write(res) {
 		try {
-			await fs.promises.writeFile(this.nombre, res);
+			await fs.promises.writeFile(this.name, res);
 		} catch (error) {
 			console.log(error);
 		}
@@ -35,8 +56,10 @@ class Container {
 	//agrega y guarda un nuevo objeto
 	async save(obj) {
 		try {
+			//verifica si existe el archivo o lo tiene que crear
+			await this.createFile(this.name);
 			//lee el archivo
-			let res = await this.read(obj);
+			let res = await this.read();
 			//busca repetidos
 			console.log(res.length);
 			if (res.length >= 1) {
