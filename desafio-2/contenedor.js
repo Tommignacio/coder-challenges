@@ -13,7 +13,7 @@ class Container {
 				return false;
 			} else {
 				//El archivo no existe, entonces lo creo;
-				await fs.promises.writeFile(path, "", "utf8");
+				await this.write("");
 				return true;
 			}
 		} catch (err) {

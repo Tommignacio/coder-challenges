@@ -4,7 +4,7 @@ async function test() {
 	const file = new Container("./productos.txt");
 
 	const saveNew = await file.save({
-		title: "cartulina",
+		title: "remera",
 		price: 123.45,
 		thumbnail: "cartulina.jpg",
 	});
