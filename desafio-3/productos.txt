@@ -1,0 +1,1 @@
+[{"title":"Escuadra","price":123.45,"thumbnail":"escuadra.jpg","id":1},{"title":"calculadora","price":235.56,"thumbnail":"calculadora.jpg","id":2}]
