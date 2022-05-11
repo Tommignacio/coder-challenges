@@ -1,4 +1,3 @@
-const { Console } = require("console");
 const { Router } = require("express");
 const router = Router();
 const Products = require("../container.js");
@@ -85,7 +84,7 @@ router.delete("/:id", existProduct, noProductError, async (req, res) => {
 	try {
 		const { id } = req.params;
 		let productDelete = await product.deleteById(Number(id));
-		res.json({ productDelete });
+		return res.json({ productDelete });
 	} catch (error) {
 		console.log(error);
 	}
